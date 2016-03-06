@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickSignIn(View view) {
         startActivity(new Intent(MainActivity.this, SignInActivity.class));
+        finish();
     }
 
     @Override
