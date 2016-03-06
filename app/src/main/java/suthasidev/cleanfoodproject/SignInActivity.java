@@ -39,9 +39,39 @@ public class SignInActivity extends AppCompatActivity {
 
         } else {
             //No Space
+            checkUser();
 
         }
 
     }   // clickSignInAuthen
+
+    private void checkUser() {
+
+        try {
+
+            MyManage myManage = new MyManage(this);
+            String[] myResultStrings = myManage.searchUser(userString);
+
+            //Check Password
+            if (passwordString.equals(myResultStrings[2])) {
+                //Password True
+
+
+            } else {
+                //Password False
+                MyAlertDialog myAlertDialog = new MyAlertDialog();
+                myAlertDialog.myDialog(SignInActivity.this, "Password ผิด",
+                        "Password ผิด ลองพิมพ์ ใหม่อีกที คะ");
+            }
+
+        } catch (Exception e) {
+            //No This User
+            MyAlertDialog myAlertDialog = new MyAlertDialog();
+            myAlertDialog.myDialog(SignInActivity.this, "ไม่มี User",
+                    "ไม่มี " + userString + " ในฐานข้อมูลของเรา");
+        }
+
+
+    }   // checkUser
 
 }   // Main Class

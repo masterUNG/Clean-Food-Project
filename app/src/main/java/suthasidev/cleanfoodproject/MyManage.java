@@ -2,6 +2,7 @@ package suthasidev.cleanfoodproject;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -45,6 +46,36 @@ public class MyManage {
         readSqLiteDatabase = objMyOpenHelper.getReadableDatabase();
 
     } //Constructors
+
+    public String[] searchUser(String strUser) {
+
+        try {
+
+            String[] resultStrings = null;
+            Cursor cursor = readSqLiteDatabase.query(table_user,
+                    new String[] {column__id, column_User, column_Password, column_Name},
+                    column_User + "=?",
+                    new String[]{String.valueOf(strUser)},
+                    null, null, null, null);
+
+            if (cursor != null) {
+                if (cursor.moveToFirst()) {
+                    resultStrings = new String[cursor.getColumnCount()];
+                    for (int i=0;i<cursor.getColumnCount();i++) {
+                        resultStrings[i] = cursor.getString(i);
+                    }
+                }
+            }
+            cursor.close();
+            return resultStrings;
+
+
+        } catch (Exception e) {
+            return null;
+        }
+
+
+    }
 
     public long addRestaurant(String strRestaurant,
                               String strImgRes,
