@@ -74,6 +74,7 @@ public class ServiceActivity extends AppCompatActivity {
                 intent.putExtra("Ingredient", ingredientsStrings[i]);
                 intent.putExtra("HowTo", howToStrings[i]);
                 intent.putExtra("Descrip", descriptionStrings[i]);
+                intent.putExtra("nameUser", nameUserString);
                 startActivity(intent);
 
             }   // onItemClick

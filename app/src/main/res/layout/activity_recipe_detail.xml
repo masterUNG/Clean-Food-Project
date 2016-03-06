@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:text="Add Comment"
             android:id="@+id/button5"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:onClick="clickAddComment" />
 
         <Button
             android:layout_width="0dp"

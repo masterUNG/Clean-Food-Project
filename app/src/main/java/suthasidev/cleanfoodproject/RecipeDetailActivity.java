@@ -1,7 +1,9 @@
 package suthasidev.cleanfoodproject;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,7 +17,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
     private ListView ingredientListView, howToListView;
     private ImageView imageView;
     private String recipeString, descripString, ingredientString,
-            howtoString, imageString;
+            howtoString, imageString, nameUserString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,15 @@ public class RecipeDetailActivity extends AppCompatActivity {
         showView();
 
     }   // Main Method
+
+    public void clickAddComment(View view) {
+
+        Intent intent = new Intent(RecipeDetailActivity.this, AddCommentActivity.class);
+        intent.putExtra("Recipe", recipeString);
+        intent.putExtra("nameUser", nameUserString);
+        startActivity(intent);
+
+    }   // clickAddComment
 
     private void showView() {
 
@@ -53,6 +64,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
         ingredientString = getIntent().getStringExtra("Ingredient");
         howtoString = getIntent().getStringExtra("HowTo");
         descripString = getIntent().getStringExtra("Descrip");
+        nameUserString = getIntent().getStringExtra("nameUser");
     }
 
     private void bindWidget() {

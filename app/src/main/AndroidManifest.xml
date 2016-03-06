@@ -20,7 +20,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".ServiceActivity" />
-        <activity android:name=".RecipeDetailActivity"></activity>
+        <activity android:name=".RecipeDetailActivity" />
+        <activity android:name=".AddCommentActivity"></activity>
     </application>
 
 </manifest>
