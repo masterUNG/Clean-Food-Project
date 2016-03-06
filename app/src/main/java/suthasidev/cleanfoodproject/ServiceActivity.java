@@ -1,9 +1,12 @@
 package suthasidev.cleanfoodproject;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,11 +43,11 @@ public class ServiceActivity extends AppCompatActivity {
         cursor.moveToFirst();
 
         int intCount = cursor.getCount();
-        String[] recipeStrings = new String[intCount];
-        String[] ingredientsStrings = new String[intCount];
-        String[] howToStrings = new String[intCount];
-        String[] descriptionStrings = new String[intCount];
-        String[] imageRecipeStrings = new String[intCount];
+        final String[] recipeStrings = new String[intCount];
+        final String[] ingredientsStrings = new String[intCount];
+        final String[] howToStrings = new String[intCount];
+        final String[] descriptionStrings = new String[intCount];
+        final String[] imageRecipeStrings = new String[intCount];
 
         for (int i=0;i<intCount;i++) {
 
@@ -61,7 +64,20 @@ public class ServiceActivity extends AppCompatActivity {
         MyAdapter myAdapter = new MyAdapter(ServiceActivity.this, imageRecipeStrings, recipeStrings);
         recipeListView.setAdapter(myAdapter);
 
+        recipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                Intent intent = new Intent(ServiceActivity.this, RecipeDetailActivity.class);
+                intent.putExtra("nameRecipe", recipeStrings[i]);
+                intent.putExtra("urlRecipe", imageRecipeStrings[i]);
+                intent.putExtra("Ingredient", ingredientsStrings[i]);
+                intent.putExtra("HowTo", howToStrings[i]);
+                intent.putExtra("Descrip", descriptionStrings[i]);
+                startActivity(intent);
+
+            }   // onItemClick
+        });
 
     }   // createListView
 
