@@ -61,6 +61,15 @@ public class MainActivity extends AppCompatActivity {
 
     }  //Main Method
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        deleteAllSQLite();
+        synJSONtoSQLite();
+
+    }
+
     private void setGridview() {
         GridviewAdapter adapter = new GridviewAdapter(MainActivity.this, objStrings, objImage);
         gridView = (GridView) findViewById(R.id.gridView);
