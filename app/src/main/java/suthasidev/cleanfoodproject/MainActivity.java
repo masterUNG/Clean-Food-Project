@@ -61,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
     }  //Main Method
 
+    public void clickSignIn(View view) {
+        startActivity(new Intent(MainActivity.this, SignInActivity.class));
+    }
+
     @Override
     protected void onRestart() {
         super.onRestart();

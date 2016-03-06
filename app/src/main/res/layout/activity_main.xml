@@ -17,14 +17,31 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:numColumns="2"
-        android:layout_above="@+id/button2"
+        android:layout_above="@+id/linBotton"
         android:layout_gravity="center" />
 
-    <Button
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:id="@+id/button2"
         android:layout_alignParentBottom="true"
-        android:onClick="clickSignUpMain" />
+        android:id="@+id/linBotton">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:id="@+id/button2"
+            android:layout_alignParentBottom="true"
+            android:onClick="clickSignUpMain"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/signin"
+            android:id="@+id/button3"
+            android:layout_weight="1"
+            android:onClick="clickSignIn" />
+    </LinearLayout>
 </RelativeLayout>
