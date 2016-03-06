@@ -28,6 +28,20 @@ public class SignInActivity extends AppCompatActivity {
 
     public void clickSignInAuthen(View view) {
 
+        userString = userEditText.getText().toString().trim();
+        passwordString = passwordEditText.getText().toString().trim();
+
+        //Check Space
+        if (userString.equals("") || passwordString.equals("")) {
+            //Have Space
+            MyAlertDialog myAlertDialog = new MyAlertDialog();
+            myAlertDialog.myDialog(SignInActivity.this, "มีช่องว่าง", "กรุณากรอกทุกช่อง คะ");
+
+        } else {
+            //No Space
+
+        }
+
     }   // clickSignInAuthen
 
 }   // Main Class
